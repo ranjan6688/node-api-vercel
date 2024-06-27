@@ -5,7 +5,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const node_json_db_1 = require("node-json-db");
-var db = new node_json_db_1.JsonDB(new node_json_db_1.Config("db.json", true, false, '/'));
+const path_1 = __importDefault(require("path"));
+var db = new node_json_db_1.JsonDB(new node_json_db_1.Config(path_1.default.join(process.cwd(), 'db.json'), true, false, '/'));
 const app = (0, express_1.default)();
 const port = process.env.PORT || 8080;
 app.get('/', (_req, res) => {

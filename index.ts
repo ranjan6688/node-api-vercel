@@ -1,7 +1,8 @@
 import express, { Request, Response } from 'express'
 import { Config, JsonDB } from 'node-json-db';
+import path from 'path';
 
-var db = new JsonDB(new Config("db.json", true, false, '/'));
+var db = new JsonDB(new Config(path.join(process.cwd(), 'db.json'), true, false, '/'));
 
 const app = express()
 const port = process.env.PORT || 8080
