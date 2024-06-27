@@ -147,11 +147,12 @@ class DbService {
                 $ClientCode: 'RADIUS',
             };
             var result = this.database.prepare(query);
-            var sss = result.run(queryObj, (row, err) => {
-                console.log(row);
-                console.log(err);
+            result.run(queryObj, (row, err) => {
+                if (err)
+                    resolve(err);
+                else
+                    resolve(result);
             });
-            resolve(sss);
         });
     }
 }

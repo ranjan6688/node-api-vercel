@@ -107,11 +107,12 @@ export class DbService {
                 $ClientCode: 'RADIUS',
             };
             var result = this.database.prepare(query);
-            var sss = result.run(queryObj, (row: any, err: any) => {
-                console.log(row);
-                console.log(err);
+            result.run(queryObj, (row: any, err: any) => {
+                if(err)
+                    resolve(err);
+                else
+                    resolve(result);
             });
-            resolve(sss);
         });
     }
 
