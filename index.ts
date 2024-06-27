@@ -1,14 +1,28 @@
 import express, { Request, Response } from 'express'
 import { Config, JsonDB } from 'node-json-db';
 import path from 'path';
+import { DbService } from './dbSvc';
 
 var db = new JsonDB(new Config(path.join(process.cwd(), 'db.json'), true, false, '/'));
+var dbSvc = new DbService();
 
 const app = express()
 const port = process.env.PORT || 8080
 
 app.get('/', (_req: Request, res: Response) => {
   return res.send('Express Typescript on Vercel')
+})
+
+app.get('/add', async (_req: Request, res: Response) => {
+  return res.send(await dbSvc.addUser());
+})
+
+app.get('/update', async (_req: Request, res: Response) => {
+    return res.send(404);
+})
+
+app.get('/fetch', async (_req: Request, res: Response) => {
+    return res.send(404);
 })
 
 app.get('/ping', (_req: Request, res: Response) => {
