@@ -1,4 +1,3 @@
-import { Query } from './node_modules/@firebase/firestore-types/index.d';
 import * as sqlite from "sqlite3";
 import path from 'path';
 
