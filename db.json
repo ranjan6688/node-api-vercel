@@ -3,7 +3,8 @@
         {
             "id": 1,
             "title": "json-server",
-            "author": "typicode"
+            "author": "typicode",
+            "comments": "If you are transitioning from a fully managed server or containerized environment to Vercel’s serverless architecture, you may need to rethink a few concepts in your application since there is no longer a server always running in the background. Websockets: Serverless Functions have maximum execution limits and should respond as quickly as possible. They should not subscribe to data events. Instead, we need a client that subscribes to data events and a Serverless Function that publishes new data. Consider using a serverless friendly Realtime data provider. Database Connections: The nature of serverless functions means they can open multiple database connections in response to increasing traffic. To manage this efficiently, use serverless-friendly databases or implement connection pooling. This helps ensure optimal connections and maintains application uptime. Templating and View Engines: In serverless environments, optimizing response computation is crucial. Consider the efficiency of view engines like React, Pug or EJS. It is also important to set up correct headers to enable caching, preventing the need to compute the same response for every request. This approach minimizes on-demand computation and leverages cached content for future requests. Error Handling: Express.js will swallow errors that can put the main function into an undefined state unless properly handled. Express.js will render it’s own error pages (500), which prevents Vercel from discarding the function and resetting its state. Implement robust error handling to ensure errors are properly managed and do not interfere with the serverless function's lifecycle."
         }
     ],
     "comments": [
