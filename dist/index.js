@@ -16,20 +16,18 @@ app.get('/ping', (_req, res) => {
     return res.send('pong 🏓');
 });
 app.get('/posts', async (_req, res) => {
-    db.getData("/posts").then((val) => {
-        return res.send(JSON.stringify(val));
-    }).catch((err) => {
-        return res.send(JSON.stringify(err));
-    });
+    return res.send(await db.getData("/posts"));
 });
 app.get('/comments', async (_req, res) => {
     // var data = await db.getData("/comments");
     // return res.send(JSON.stringify(data))
-    return res.send('hello');
+    //   return res.send('hello')
+    return res.send(await db.getData("/comments"));
 });
-app.get('/profile', (_req, res) => {
+app.get('/profile', async (_req, res) => {
     // var data = await db.getData("/profile");
-    return res.send('hello');
+    //   return res.send('hello')
+    return res.send(await db.getData("/profile"));
 });
 app.listen(port, () => {
     return console.log(`Server is listening on ${port}`);

@@ -16,23 +16,20 @@ app.get('/ping', (_req: Request, res: Response) => {
 })
 
 app.get('/posts', async (_req: Request, res: Response) => {
-  db.getData("/posts").then((val: any) => {
-    return res.send(JSON.stringify(val));
-  }).catch((err: any) => {
-    return res.send(JSON.stringify(err));
-  });
-  
+    return res.send(await db.getData("/posts"));  
 })
 
 app.get('/comments', async (_req: Request, res: Response) => {
   // var data = await db.getData("/comments");
   // return res.send(JSON.stringify(data))
-  return res.send('hello')
+//   return res.send('hello')
+  return res.send(await db.getData("/comments"));  
 })
 
-app.get('/profile', (_req: Request, res: Response) => {
+app.get('/profile', async (_req: Request, res: Response) => {
   // var data = await db.getData("/profile");
-  return res.send('hello')
+//   return res.send('hello')
+  return res.send(await db.getData("/profile"));  
 })
 
 app.listen(port, () => {
